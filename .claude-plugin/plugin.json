@@ -1,0 +1,10 @@
+{
+  "name": "assist",
+  "version": "1.0.0",
+  "description": "Personal assistant. Daily coaching, meeting prep, project tracking, and task management.",
+  "author": {
+    "name": "Duncan Stoddard"
+  },
+  "homepage": "https://github.com/duncstod/assist",
+  "license": "MIT"
+}

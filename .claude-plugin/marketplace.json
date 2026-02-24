@@ -1,0 +1,13 @@
+{
+  "name": "assist",
+  "owner": {
+    "name": "Duncan Stoddard"
+  },
+  "plugins": [
+    {
+      "name": "assist",
+      "source": "./",
+      "description": "Personal assistant. Daily coaching, meeting prep, project tracking, and task management."
+    }
+  ]
+}
