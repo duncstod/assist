@@ -54,7 +54,7 @@ Based on their answer:
 - Add to LOG with decision and rationale
 
 ### If question
-- Suggest: "Want to use /project-think to work through this?"
+- Suggest: "Want to use /assist::project-think to work through this?"
 
 ## Pattern Check
 

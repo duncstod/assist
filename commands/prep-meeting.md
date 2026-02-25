@@ -3,7 +3,7 @@ description: Prepare for an upcoming meeting. Builds talking points, anticipated
 allowed-tools: AskUserQuestion, Read, Write, Edit, mcp__google-calendar__list-events, mcp__google-calendar__get-current-time
 ---
 
-Read ~/.claude/CLAUDE.md (for stakeholder profiles), ~/.claude/COACH.md (for personality), ~/.claude/MEETING.md (for meeting state), and ~/.claude/PROJECTS.md (for project context).
+Read ~/.claude/ASSIST.md (for stakeholder profiles), ~/.claude/COACH.md (for personality), ~/.claude/MEETING.md (for meeting state), and ~/.claude/PROJECTS.md (for project context).
 
 ## Context
 
@@ -18,7 +18,7 @@ First, get current time and fetch upcoming calendar events:
 
 If calendar MCP is not available, skip to asking which meeting they're prepping for.
 
-Read silently: ~/.claude/CLAUDE.md (stakeholders), ~/.claude/COACH.md (personality), ~/.claude/MEETING.md (current state).
+Read silently: ~/.claude/ASSIST.md (stakeholders), ~/.claude/COACH.md (personality), ~/.claude/MEETING.md (current state).
 
 ## Select Meeting
 
@@ -39,7 +39,7 @@ If no calendar events found, fall back to asking: "Which meeting are you preppin
 
 Parse the selected meeting. If they selected from calendar, extract attendee info automatically.
 
-If they mention a person in their selection, check ~/.claude/CLAUDE.md for their stakeholder profile.
+If they mention a person in their selection, check ~/.claude/ASSIST.md for their stakeholder profile.
 
 Check ~/.claude/PROJECTS.md for projects involving any meeting attendees. If found, note them for later.
 
@@ -64,7 +64,7 @@ Update ~/.claude/MEETING.md CURRENT PREP section with:
 
 ### My Talking Points
 - [Based on what they need from the meeting]
-- [Based on stakeholder priorities from CLAUDE.md]
+- [Based on stakeholder priorities from ASSIST.md]
 
 ### Questions to Ask
 - [Based on what they want to learn/achieve]
@@ -83,7 +83,7 @@ Update ~/.claude/MEETING.md CURRENT PREP section with:
 | [From PROJECTS.md - projects where attendee is stakeholder] | [Status] | [Last LOG entry summary] |
 ```
 
-Reference stakeholder profile from ~/.claude/CLAUDE.md for context on what that person cares about.
+Reference stakeholder profile from ~/.claude/ASSIST.md for context on what that person cares about.
 
 If relevant projects exist, suggest project-related talking points:
 - "[Attendee] is stakeholder on [project]. Update them on [current focus]."

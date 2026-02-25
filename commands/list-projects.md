@@ -46,4 +46,4 @@ MISSION MAPPING
 
 ## Prompt
 
-"Want to update one of these? Or `/add-project` to start a new one."
+"Want to update one of these? Or `/assist::add-project` to start a new one."

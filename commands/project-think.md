@@ -4,7 +4,7 @@ argument-hint: "[project-slug]"
 allowed-tools: AskUserQuestion, Read, Write, Edit
 ---
 
-Read ~/.claude/projects/{slug}.md (project file), ~/.claude/CLAUDE.md (for stakeholder context), ~/.claude/COACH.md (for challenge patterns and decision tests).
+Read ~/.claude/projects/{slug}.md (project file), ~/.claude/ASSIST.md (for stakeholder context), ~/.claude/COACH.md (for challenge patterns and decision tests).
 
 ## Select Project
 
@@ -36,7 +36,7 @@ Based on category, ask probing questions. One at a time. Let them think.
 - "What would you recommend to someone else in this situation?"
 
 ### Stakeholder alignment
-Reference the stakeholder's profile from ~/.claude/CLAUDE.md:
+Reference the stakeholder's profile from ~/.claude/ASSIST.md:
 - "What does [stakeholder] actually need from this?"
 - "What would make them say 'this is exactly what I wanted'?"
 - "Where might your goals and theirs diverge?"

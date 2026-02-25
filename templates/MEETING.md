@@ -1,6 +1,6 @@
 # MEETING.md - Meeting Prep State
 
-> Dynamic file. See `CLAUDE.md` for stakeholder profiles.
+> Dynamic file. See `ASSIST.md` for stakeholder profiles.
 
 **Last Updated:** --
 
@@ -16,7 +16,7 @@
 
 # CURRENT PREP
 
-*No meeting currently being prepped. Run `/prep-meeting` to start.*
+*No meeting currently being prepped. Run `/assist::prep-meeting` to start.*
 
 ---
 
@@ -24,8 +24,8 @@
 
 ## Meeting History
 
-*No meetings logged yet. Run `/review-meeting` after a meeting to capture learnings.*
+*No meetings logged yet. Run `/assist::review-meeting` after a meeting to capture learnings.*
 
 ---
 
-*Use `/prep-meeting` to prepare, `/review-meeting` to reflect, `/list-meetings` to see upcoming.*
+*Use `/assist::prep-meeting` to prepare, `/assist::review-meeting` to reflect, `/assist::list-meetings` to see upcoming.*

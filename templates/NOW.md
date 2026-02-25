@@ -1,7 +1,7 @@
 # NOW.md — Current State
 
 > Dynamic file. Update often. See `COACH.md` for mission and psychology.
-> Run `/setup-life` to populate this file.
+> Run `/assist::setup-life` to populate this file.
 
 **Last Updated:** --
 

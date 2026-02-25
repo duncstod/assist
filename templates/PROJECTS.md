@@ -28,4 +28,4 @@
 
 ---
 
-*Use `/add-project` to create, `/project-status` to update, `/close-project` to archive.*
+*Use `/assist::add-project` to create, `/assist::project-status` to update, `/assist::close-project` to archive.*

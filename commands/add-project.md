@@ -3,7 +3,7 @@ description: Create a new project with goals, stakeholders, and mission connecti
 allowed-tools: AskUserQuestion, Read, Write, Edit
 ---
 
-Read ~/.claude/CLAUDE.md (for stakeholder profiles), ~/.claude/NOW.md (for active missions), ~/.claude/PROJECTS.md (for existing projects).
+Read ~/.claude/ASSIST.md (for stakeholder profiles), ~/.claude/NOW.md (for active missions), ~/.claude/PROJECTS.md (for existing projects).
 
 ## Ask
 
@@ -17,7 +17,7 @@ Ask one at a time:
 
 1. "What's the goal? One sentence - what does done look like?"
 2. "Why does this matter? (Visibility, impact, stakeholder need?)"
-3. "Who are the key stakeholders?" (Reference ~/.claude/CLAUDE.md profiles if relevant)
+3. "Who are the key stakeholders?" (Reference ~/.claude/ASSIST.md profiles if relevant)
 4. "Which mission does this connect to?" (Reference ~/.claude/NOW.md Active Missions)
 
 ## Challenge

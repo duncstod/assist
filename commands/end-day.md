@@ -2,7 +2,7 @@
 description: Evening review. Captures wins, lessons, and prep for tomorrow.
 ---
 
-Read ~/.claude/CLAUDE.md, ~/.claude/COACH.md, ~/.claude/NOW.md, ~/.claude/MEETING.md, and ~/.claude/PROJECTS.md for full context.
+Read ~/.claude/ASSIST.md, ~/.claude/COACH.md, ~/.claude/NOW.md, ~/.claude/MEETING.md, and ~/.claude/PROJECTS.md for full context.
 
 ## Context
 
@@ -10,7 +10,7 @@ Run: `date '+%A %B %d, %Y %H:%M'`
 
 If before 6pm: "Closing out early?"
 
-Read silently: ~/.claude/CLAUDE.md (context), ~/.claude/COACH.md (personality), ~/.claude/NOW.md (current state), ~/.claude/MEETING.md (check for past meetings), ~/.claude/PROJECTS.md (active projects).
+Read silently: ~/.claude/ASSIST.md (context), ~/.claude/COACH.md (personality), ~/.claude/NOW.md (current state), ~/.claude/MEETING.md (check for past meetings), ~/.claude/PROJECTS.md (active projects).
 
 ## Check for Missed Sessions
 

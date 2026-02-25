@@ -4,7 +4,7 @@
 
 Assist is a personal productivity framework for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). It provides daily workflow commands (morning kickoff, meeting prep, project tracking) backed by persistent context files that maintain state across sessions.
 
-Distributed as a **Claude Code plugin** via marketplace (`/plugin marketplace add duncstod/assist`). Commands live in `commands/` and are automatically discovered by Claude Code when the plugin is installed. State files live at `~/.claude/` and are created by `/setup-life`.
+Distributed as a **Claude Code plugin** via marketplace (`/plugin marketplace add duncstod/assist`). Commands live in `commands/` and are automatically discovered by Claude Code when the plugin is installed. State files live at `~/.claude/` and are created by `/assist::setup-life`.
 
 ## Directory Layout
 
@@ -32,7 +32,7 @@ Distributed as a **Claude Code plugin** via marketplace (`/plugin marketplace ad
 │   ├── setup-life.md
 │   └── add-stakeholder.md
 ├── templates/              # Reference templates for state files
-│   ├── CLAUDE.md
+│   ├── ASSIST.md
 │   ├── COACH.md
 │   ├── NOW.md
 │   ├── MEETING.md
@@ -41,14 +41,13 @@ Distributed as a **Claude Code plugin** via marketplace (`/plugin marketplace ad
 │       └── example-project.md
 ├── README.md
 ├── ARCHITECTURE.md         # This file
-├── LICENSE
-└── LINKEDIN-POST.md
+└── LICENSE
 ```
 
-### User's `~/.claude/` (after `/setup-life`)
+### User's `~/.claude/` (after `/assist::setup-life`)
 
 ```
-├── CLAUDE.md          # Personal context (identity, stakeholders)
+├── ASSIST.md          # Personal context (symlink to CLAUDE.md if user chose that option)
 ├── COACH.md           # Coaching personality
 ├── NOW.md             # Daily state (priorities, tasks, memory log)
 ├── MEETING.md         # Meeting prep and history
@@ -64,19 +63,19 @@ Distributed as a **Claude Code plugin** via marketplace (`/plugin marketplace ad
 
 | File | Purpose | Updated by |
 |------|---------|------------|
-| `CLAUDE.md` | Identity, stakeholders, assistant file index. Loaded in every session. | `/setup-life`, `/add-stakeholder`, manual edits |
-| `COACH.md` | Coaching personality and tone. Read by daily workflow commands. | `/setup-life`, manual edits |
-| `NOW.md` | Current priorities, MIT, active tasks, working mode, memory log. | `/start-day`, `/check-day`, `/end-day` |
-| `MEETING.md` | Upcoming meetings, prep notes, meeting history. | `/prep-meeting`, `/review-meeting`, `/list-meetings` |
-| `PROJECTS.md` | Index of active projects with status, stakeholders, slug. | `/add-project`, `/close-project`, `/project-status` |
-| `projects/{slug}.md` | Detailed project state: goals, remaining steps, decision log. | `/project-status`, `/project-think` |
+| `ASSIST.md` | Identity, stakeholders, assistant file index. Commands always read this path. If user chose CLAUDE.md during setup, this is a symlink to CLAUDE.md. | `/assist::setup-life`, `/assist::add-stakeholder`, manual edits |
+| `COACH.md` | Coaching personality and tone. Read by daily workflow commands. | `/assist::setup-life`, manual edits |
+| `NOW.md` | Current priorities, MIT, active tasks, working mode, memory log. | `/assist::start-day`, `/assist::check-day`, `/assist::end-day` |
+| `MEETING.md` | Upcoming meetings, prep notes, meeting history. | `/assist::prep-meeting`, `/assist::review-meeting`, `/assist::list-meetings` |
+| `PROJECTS.md` | Index of active projects with status, stakeholders, slug. | `/assist::add-project`, `/assist::close-project`, `/assist::project-status` |
+| `projects/{slug}.md` | Detailed project state: goals, remaining steps, decision log. | `/assist::project-status`, `/assist::project-think` |
 
 ## How Shared Context Works
 
 The system's power comes from **shared context across all commands**. Every command reads the same files:
 
 ```
-CLAUDE.md --- identity + stakeholders ---+
+ASSIST.md --- identity + stakeholders ---+
 COACH.md ---- personality + patterns ----+
 NOW.md ------ priorities + tasks --------+-- Every command has full context
 MEETING.md -- meeting state -------------+
@@ -84,12 +83,12 @@ PROJECTS.md -- project index ------------+
 ```
 
 When you prep a meeting, the system already knows:
-- Who the attendee is and what they care about (from CLAUDE.md)
+- Who the attendee is and what they care about (from ASSIST.md)
 - What projects involve them (from PROJECTS.md)
 - What you're currently focused on (from NOW.md)
 - Your patterns and blind spots (from COACH.md)
 
-This is what makes it feel like an assistant rather than a chatbot.
+This is what makes it feel like an assistant rather than a chatbot. During setup, users choose whether to store context in `ASSIST.md` (standalone) or `CLAUDE.md` (available in all sessions). Commands always read `ASSIST.md` -- if the user chose CLAUDE.md, it's a symlink.
 
 ## Commands
 
@@ -108,7 +107,7 @@ Each command lives in `commands/<name>.md` with YAML frontmatter (`description:`
 ### The Daily Loop
 
 ```
-/start-day (AM)
+/assist::start-day (AM)
     +-- Check for missed sessions
     +-- Surface today's meetings
     +-- Surface open/overdue tasks
@@ -116,11 +115,11 @@ Each command lives in `commands/<name>.md` with YAML frontmatter (`description:`
     +-- Set 3 priorities + MIT
     +-- Write Memory Log entry (AM)
 
-/check-day (anytime)
+/assist::check-day (anytime)
     +-- "What are you doing right now?"
     +-- Redirect if off track
 
-/end-day (PM)
+/assist::end-day (PM)
     +-- "How'd it go?"
     +-- Update tasks and projects
     +-- Clean up past meetings
@@ -130,7 +129,7 @@ Each command lives in `commands/<name>.md` with YAML frontmatter (`description:`
 
 ### The Memory Log
 
-The `LOG` section in `NOW.md` is the core learning mechanism. Each `/start-day` and `/end-day` adds a timestamped entry. Over time, this creates a pattern library that the coaching personality references:
+The `LOG` section in `NOW.md` is the core learning mechanism. Each `/assist::start-day` and `/assist::end-day` adds a timestamped entry. Over time, this creates a pattern library that the coaching personality references:
 
 - **3x rule:** If the same behavior appears 3+ times, the coach flags it
 - **AM/PM markers:** Enable detection of missed sessions
@@ -160,7 +159,7 @@ To configure MCP servers, edit `~/.claude/mcp.json` (not part of this plugin).
 ### Adding more state files
 
 1. Create the `.md` file at `~/.claude/`
-2. Add to the ASSISTANT FILES table in `CLAUDE.md`
+2. Add to the ASSISTANT FILES table in `ASSIST.md`
 3. Reference from relevant commands
 
 ### Custom integrations
@@ -168,6 +167,6 @@ To configure MCP servers, edit `~/.claude/mcp.json` (not part of this plugin).
 The Jira and calendar integrations in the original system are implemented as:
 - Additional commands with tool-specific `allowed-tools`
 - MCP server references in command files (e.g., `mcp__claude_ai_Atlassian__createJiraIssue`)
-- Config sections in CLAUDE.md (cloud IDs, project keys, etc.)
+- Config sections in ASSIST.md (cloud IDs, project keys, etc.)
 
 Follow the same pattern for any external tool integration.

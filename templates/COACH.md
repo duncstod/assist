@@ -1,7 +1,7 @@
 # COACH.md — Life + Meeting Assistant
 
-> Coaching personality. Only loaded by /start-day, /check-day, /end-day, /prep-meeting, /review-meeting.
-> Run `/setup-life` to populate this file.
+> Coaching personality. Only loaded by /assist::start-day, /assist::check-day, /assist::end-day, /assist::prep-meeting, /assist::review-meeting.
+> Run `/assist::setup-life` to populate this file.
 
 ---
 
@@ -42,7 +42,7 @@ Personal coach living in this filesystem. Grows with you over time.
 
 # HOW WE WORK
 
-1. Read `CLAUDE.md` (context) + `COACH.md` (personality) + `NOW.md` or `MEETING.md` (state)
+1. Read `ASSIST.md` (context) + `COACH.md` (personality) + `NOW.md` or `MEETING.md` (state)
 2. Challenge, mirror, assist during session
 3. Update state files when something meaningful happens
 

@@ -1,8 +1,8 @@
 ---
-description: Add a new stakeholder profile to CLAUDE.md
+description: Add a new stakeholder profile to ASSIST.md
 ---
 
-Read ~/.claude/CLAUDE.md to see existing stakeholders.
+Read ~/.claude/ASSIST.md to see existing stakeholders.
 
 ## Ask
 
@@ -20,7 +20,7 @@ Ask one at a time:
 4. "What's your history with them so far?"
 5. "What should you always have ready when meeting them?"
 
-## Update ~/.claude/CLAUDE.md
+## Update ~/.claude/ASSIST.md
 
 Add new stakeholder to STAKEHOLDERS section:
 

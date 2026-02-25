@@ -42,4 +42,4 @@ If meetings coming up soon without prep:
 To connect Google Calendar:
 1. Set up Google Calendar MCP server
 2. Add to Claude Code MCP settings
-3. `/list-meetings` will then pull live calendar data
+3. `/assist::list-meetings` will then pull live calendar data

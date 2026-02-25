@@ -1,11 +1,11 @@
 ---
-description: First-time setup. Creates CLAUDE.md, COACH.md, NOW.md, and MEETING.md through a 5-minute conversation.
+description: First-time setup. Creates context files (ASSIST.md or CLAUDE.md), COACH.md, NOW.md, and MEETING.md through a 5-minute conversation.
 ---
 
 # Setup Life
 
 You're setting up a new user's 4-file system:
-- **CLAUDE.md** -- Generic context (loads every session)
+- **ASSIST.md** (or **CLAUDE.md** -- user's choice) -- Generic context (loads every session)
 - **COACH.md** -- Coaching personality (loaded by assistant commands)
 - **NOW.md** -- Life assistant state
 - **MEETING.md** -- Meeting assistant state
@@ -29,6 +29,15 @@ Ask ONE question at a time. Wait for their answer before asking the next.
 First -- what should I call you?"
 
 *Wait for answer.*
+
+### 1b. Context file
+
+"One quick setup question. This plugin stores your identity, stakeholders, and preferences in a context file. You have two options:
+
+- **CLAUDE.md** -- Your context loads in every Claude Code session, even outside /assist:: commands. Best if you want your identity always available.
+- **ASSIST.md** -- Separate file just for this plugin. Keeps your CLAUDE.md untouched. Best if you already have your own CLAUDE.md."
+
+*Wait for answer. Remember their choice for the file creation step.*
 
 ### 2. Basic info
 
@@ -97,14 +106,35 @@ What are 2-3 modes that describe how you work?"
 
 ---
 
-## Create ~/.claude/CLAUDE.md
+## Create context file
 
-Create ~/.claude/CLAUDE.md with this structure (generic context only):
+The user chose either CLAUDE.md or ASSIST.md in step 1b. Follow the matching path.
+
+### If user chose CLAUDE.md:
+
+1. Check if `~/.claude/CLAUDE.md` already exists and has content.
+2. **If it exists with content:**
+   - Tell the user: "You already have a CLAUDE.md. I'll add the Assist sections to it. Your existing content stays."
+   - Read its contents. Append the sections below (ME, STAKEHOLDERS, ASSISTANT FILES) to the end of the existing file under an `---` separator. Skip any sections that already exist.
+3. **If no existing CLAUDE.md:** Create it fresh with the template below, using the heading `# CLAUDE.md -- [Name]` and description `> Personal context for Claude Code sessions.`
+4. **Create symlink:** If `~/.claude/ASSIST.md` already exists as a real file, back it up to `~/.claude/ASSIST.md.backup`. Then run: `ln -sf ~/.claude/CLAUDE.md ~/.claude/ASSIST.md`
+
+### If user chose ASSIST.md:
+
+1. If `~/.claude/ASSIST.md` already exists (re-running setup):
+   - If it's a symlink, tell the user: "You previously chose CLAUDE.md mode. Switching to standalone ASSIST.md." Remove the symlink.
+   - If it's a real file, ask: "You already have an ASSIST.md. Start fresh or keep existing?"
+2. Create `~/.claude/ASSIST.md` with the template below, using the heading `# ASSIST.md -- [Name]` and description `> Personal context for the Assist plugin.`
+3. Do not touch `~/.claude/CLAUDE.md`.
+
+### Template (used by both paths):
+
+Use the heading and description matching their choice (see above).
 
 ```markdown
-# CLAUDE.md -- [Name]
+# [HEADING -- see above]
 
-> Personal context for Claude Code sessions.
+> [DESCRIPTION -- see above]
 
 ---
 
@@ -148,19 +178,19 @@ Create ~/.claude/CLAUDE.md with this structure (generic context only):
 | `PROJECTS.md` | Active project index with stakeholders and status | Any question about projects |
 | `projects/{slug}.md` | Detailed project state: goals, remaining steps, log | Discussing a specific project (get slug from PROJECTS.md) |
 | `MEETING.md` | Meeting prep, upcoming meetings, meeting history | Meetings, prep, or follow-ups |
-| `COACH.md` | Coaching personality | Only loaded by coaching commands (/start-day, /end-day, etc.) |
+| `COACH.md` | Coaching personality | Only loaded by coaching commands (/assist::start-day, /assist::end-day, etc.) |
 ```
 
 ---
 
-## Create ~/.claude/COACH.md
+## Create ~/.claude/COACH.md (if it doesn't exist)
 
 Create ~/.claude/COACH.md with this structure (coaching personality):
 
 ```markdown
 # COACH.md -- Life + Meeting Assistant
 
-> Coaching personality. Only loaded by /start-day, /check-day, /end-day, /prep-meeting, /review-meeting.
+> Coaching personality. Only loaded by /assist::start-day, /assist::check-day, /assist::end-day, /assist::prep-meeting, /assist::review-meeting.
 
 ---
 
@@ -203,7 +233,7 @@ Personal coach living in this filesystem. Grows with [Name] over time.
 
 # HOW WE WORK
 
-1. Read `CLAUDE.md` (context) + `COACH.md` (personality) + `NOW.md` or `MEETING.md` (state)
+1. Read `ASSIST.md` (context) + `COACH.md` (personality) + `NOW.md` or `MEETING.md` (state). Note: if the user chose CLAUDE.md, write `CLAUDE.md` instead of `ASSIST.md` here.
 2. Challenge, mirror, assist during session
 3. Update state files when something meaningful happens
 
@@ -310,7 +340,7 @@ Create ~/.claude/MEETING.md with this structure:
 ```markdown
 # MEETING.md - Meeting Prep State
 
-> Dynamic file. See `CLAUDE.md` for stakeholder profiles.
+> Dynamic file. See `ASSIST.md` for stakeholder profiles. Note: if the user chose CLAUDE.md, write `CLAUDE.md` instead of `ASSIST.md` here.
 
 **Last Updated:** [Today's date]
 
@@ -326,7 +356,7 @@ Create ~/.claude/MEETING.md with this structure:
 
 # CURRENT PREP
 
-*No meeting currently being prepped. Run `/prep-meeting` to start.*
+*No meeting currently being prepped. Run `/assist::prep-meeting` to start.*
 
 ---
 
@@ -334,11 +364,11 @@ Create ~/.claude/MEETING.md with this structure:
 
 ## Meeting History
 
-*No meetings logged yet. Run `/review-meeting` after a meeting to capture learnings.*
+*No meetings logged yet. Run `/assist::review-meeting` after a meeting to capture learnings.*
 
 ---
 
-*Use `/prep-meeting` to prepare, `/review-meeting` to reflect, `/list-meetings` to see upcoming.*
+*Use `/assist::prep-meeting` to prepare, `/assist::review-meeting` to reflect, `/assist::list-meetings` to see upcoming.*
 ```
 
 ---
@@ -378,7 +408,7 @@ Create ~/.claude/PROJECTS.md with this structure:
 
 ---
 
-*Use `/add-project` to create, `/project-status` to update, `/close-project` to archive.*
+*Use `/assist::add-project` to create, `/assist::project-status` to update, `/assist::close-project` to archive.*
 ```
 
 ---
@@ -386,20 +416,22 @@ Create ~/.claude/PROJECTS.md with this structure:
 ## Close
 
 "You're set up. I've created five files:
-- **CLAUDE.md** -- Your basic context (loads every session)
+- **[ASSIST.md or CLAUDE.md]** -- Your basic context (loads every session). Use the filename matching their choice.
 - **COACH.md** -- Coaching personality (activates with assistant commands)
 - **NOW.md** -- Your current state, updated daily
 - **MEETING.md** -- Meeting prep and history
 - **PROJECTS.md** -- Project index
 
+If they chose CLAUDE.md, add: "Since you chose CLAUDE.md, your identity and stakeholders will be available in all Claude Code sessions -- not just /assist:: commands."
+
 Here's how it works:
-- `/start-day` -- Morning. Set your priorities.
-- `/check-day` -- Anytime. Quick check-in.
-- `/end-day` -- Evening. Capture what happened.
-- `/prep-meeting` -- Prepare for a meeting.
-- `/review-meeting` -- Reflect after a meeting.
-- `/add-stakeholder` -- Add a new stakeholder profile.
-- `/add-project` -- Start tracking a new project.
+- `/assist::start-day` -- Morning. Set your priorities.
+- `/assist::check-day` -- Anytime. Quick check-in.
+- `/assist::end-day` -- Evening. Capture what happened.
+- `/assist::prep-meeting` -- Prepare for a meeting.
+- `/assist::review-meeting` -- Reflect after a meeting.
+- `/assist::add-stakeholder` -- Add a new stakeholder profile.
+- `/assist::add-project` -- Start tracking a new project.
 
 The Memory Log in NOW.md will track patterns over time. The longer you use it, the better it gets.
 

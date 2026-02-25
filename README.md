@@ -80,7 +80,7 @@ Created by `/assist::setup-life` at `~/.claude/`:
 
 | File | Purpose |
 |------|---------|
-| `CLAUDE.md` | Your identity, stakeholders, preferences. Loaded every session. |
+| `ASSIST.md` (or `CLAUDE.md`) | Your identity, stakeholders, preferences. Setup asks which file to use. Choosing CLAUDE.md makes your context available in all Claude Code sessions. |
 | `COACH.md` | Coaching personality: your mission, patterns, challenge style. |
 | `NOW.md` | Today's priorities, task list, working mode, memory log. |
 | `MEETING.md` | Meeting prep, upcoming meetings, meeting history. |

@@ -2,13 +2,13 @@
 description: Post-meeting reflection. Captures what worked, what didn't, and lessons.
 ---
 
-Read ~/.claude/CLAUDE.md (for stakeholders), ~/.claude/COACH.md (for personality), and ~/.claude/MEETING.md for context.
+Read ~/.claude/ASSIST.md (for stakeholders), ~/.claude/COACH.md (for personality), and ~/.claude/MEETING.md for context.
 
 ## Context
 
 Run: `date '+%A %B %d, %Y %H:%M'`
 
-Read silently: ~/.claude/CLAUDE.md (stakeholders), ~/.claude/COACH.md (personality), ~/.claude/MEETING.md (check CURRENT PREP for what they prepped).
+Read silently: ~/.claude/ASSIST.md (stakeholders), ~/.claude/COACH.md (personality), ~/.claude/MEETING.md (check CURRENT PREP for what they prepped).
 
 ## Ask
 
@@ -39,7 +39,7 @@ Move CURRENT PREP content to LOG as Meeting History entry:
 
 Clear CURRENT PREP section back to default:
 ```markdown
-*No meeting currently being prepped. Run `/prep-meeting` to start.*
+*No meeting currently being prepped. Run `/assist::prep-meeting` to start.*
 ```
 
 Remove meeting from UPCOMING table (if it exists there).
@@ -57,7 +57,7 @@ If follow-ups were captured:
    - Set Due = date if mentioned, otherwise "--"
 3. Confirm: "Added [N] tasks from this meeting."
 
-## Update ~/.claude/CLAUDE.md (if needed)
+## Update ~/.claude/ASSIST.md (if needed)
 
 If new insight about the stakeholder:
 - Update their profile in STAKEHOLDERS section

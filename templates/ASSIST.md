@@ -1,6 +1,6 @@
-# CLAUDE.md — [Your Name]
+# ASSIST.md — [Your Name]
 
-> Personal context for Claude Code sessions. Run `/setup-life` to populate this file.
+> Personal context for the Assist plugin. Run `/assist::setup-life` to populate this file.
 
 ---
 
@@ -25,7 +25,7 @@
 
 # STAKEHOLDERS
 
-<!-- Add stakeholder profiles with /add-stakeholder. Example: -->
+<!-- Add stakeholder profiles with /assist::add-stakeholder. Example: -->
 
 ## [Name]
 - **Role:** [Their title and team]
@@ -44,4 +44,4 @@
 | `PROJECTS.md` | Active project index with stakeholders and status | Any question about projects |
 | `projects/{slug}.md` | Detailed project state: goals, remaining steps, log | Discussing a specific project (get slug from PROJECTS.md) |
 | `MEETING.md` | Meeting prep, upcoming meetings, meeting history | Meetings, prep, or follow-ups |
-| `COACH.md` | Coaching personality | Only loaded by coaching commands (/start-day, /end-day, etc.) |
+| `COACH.md` | Coaching personality | Only loaded by coaching commands (/assist::start-day, /assist::end-day, etc.) |

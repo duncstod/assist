@@ -3,7 +3,7 @@ description: Morning kickoff. Sets intentions and MIT for the day.
 allowed-tools: AskUserQuestion, Read, Write, Edit, mcp__google-calendar__get-current-time, mcp__google-calendar__list-events
 ---
 
-Read ~/.claude/CLAUDE.md, ~/.claude/COACH.md, ~/.claude/NOW.md, ~/.claude/MEETING.md and ~/.claude/PROJECTS.md for full context.
+Read ~/.claude/ASSIST.md, ~/.claude/COACH.md, ~/.claude/NOW.md, ~/.claude/MEETING.md and ~/.claude/PROJECTS.md for full context.
 
 ## Context
 
@@ -11,7 +11,7 @@ Get current time via MCP tool `get-current-time` (if Google Calendar MCP is avai
 
 Fetch today's calendar events via MCP tool `list-events` (calendarId: "primary", timeMin: today start, timeMax: today end). If calendar MCP is not available, skip silently.
 
-Read silently: ~/.claude/CLAUDE.md (context), ~/.claude/COACH.md (personality), ~/.claude/NOW.md (current state), ~/.claude/MEETING.md (prep status), ~/.claude/PROJECTS.md (active projects).
+Read silently: ~/.claude/ASSIST.md (context), ~/.claude/COACH.md (personality), ~/.claude/NOW.md (current state), ~/.claude/MEETING.md (prep status), ~/.claude/PROJECTS.md (active projects).
 
 ## Check for Missed Sessions
 
@@ -37,7 +37,7 @@ Parse the date and time marker (AM/PM) from the header (format: `### YYYY-MM-DD 
 If there are meetings today (from calendar or ~/.claude/MEETING.md UPCOMING):
 1. Check ~/.claude/MEETING.md CURRENT PREP section
 2. If any meeting is today and CURRENT PREP is empty or for a different meeting:
-   - "You have **[meeting name]** at [time]. No prep done. Want to `/prep-meeting` first?"
+   - "You have **[meeting name]** at [time]. No prep done. Want to `/assist::prep-meeting` first?"
    - Wait for response before continuing
 
 ## Surface Tasks

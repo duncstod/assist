@@ -16,4 +16,4 @@ allowed-tools: Read, Edit, AskUserQuestion
 - Support completing multiple tasks at once (e.g., "1 and 3" or "all open")
 - Keep the table header row intact
 - Mark as `done`, don't delete rows (preserves history)
-- If completed task has a project slug, remind: "This is on [project]. Update with /project-status?"
+- If completed task has a project slug, remind: "This is on [project]. Update with /assist::project-status?"

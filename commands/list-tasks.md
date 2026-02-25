@@ -62,5 +62,5 @@ X open (Y work, Z personal) | N overdue | M completed
 
 ## Prompt
 
-If there are overdue tasks: "Any of these done? Use `/complete-task` to clear them."
-Otherwise: "Need to add one? `/add-task`"
+If there are overdue tasks: "Any of these done? Use `/assist::complete-task` to clear them."
+Otherwise: "Need to add one? `/assist::add-task`"
